@@ -21,4 +21,5 @@ Creación de proyecto:
 pnpm i @mikro-orm/core @mikro-orm/nestjs @mikro-orm/sqlite class-validator jsonwebtoken
 
 pnpm approve-builds
-    presionamos tecla 'a' despues 'Enter' despues 'y'
+
+  presionamos tecla 'a' despues 'Enter' despues 'y'
