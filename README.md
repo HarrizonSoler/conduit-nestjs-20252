@@ -31,3 +31,16 @@ En caso de error actualizar NodeJS y reintentar
 4. `nest g module user` para generar el boilerplate del módulo usuario.
 
 5. Escribir código de archivos `src/config.ts`, `src/mikro-orm.config.ts` y carpeta `src/user/`
+
+# 25/08/25
+
+### Instalación de librerias
+
+1. `pnpm i bcrypt` 
+2. `pnpm i -D @types/jsonwebtoken @types/bcrypt`
+3. `pnpm approve-builds` presionamos tecla 'a' (para seleccionar todas las opciones) despues 'Enter' despues 'y'
+
+4. Escribir código de carpeta `src/user/dto` y archivos `src/user/user.interface.ts`, `src/user/user.service.ts` 
+
+
+
