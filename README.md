@@ -1,25 +1,33 @@
 # 11/08/25
 
-Requisitos iniciales:
-- verificar instalado NodeJS (ultima versión)
-- abrir terminal en modo administrador
-- verificar con comando 'node -v'
+### Requisitos iniciales:
+1. Verificar que NodeJS se encuentre instalado en su ultima versión
 
-Instalación pnpm:
-- npm install --global corepack@latest
-- corepack enable pnpm
-- En caso de error actualizar NodeJS y reintentar
+2. En una terminal ejecutar el siguiente comando para verificar: `node -v`
 
-Instalación Nest CLI:
-- pnpm i -g @nestjs/cli
+### Instalación de pnpm:
+1. `npm install --global corepack@latest`
 
-Creación de proyecto:
-- nest new conduit-back
+2. `corepack enable pnpm`
+
+En caso de error actualizar NodeJS y reintentar
+
+### Instalación de Nest CLI
+`pnpm i -g @nestjs/cli`
+
+### Creación del proyecto
+`nest new conduit-back`
 
 # 21/08/25
 
-pnpm i @mikro-orm/core @mikro-orm/nestjs @mikro-orm/sqlite class-validator jsonwebtoken
+### Instalación de librerias iniciales
 
-pnpm approve-builds
+1. `pnpm i @mikro-orm/core @mikro-orm/nestjs @mikro-orm/sqlite class-validator jsonwebtoken`
 
-  presionamos tecla 'a' despues 'Enter' despues 'y'
+2. `pnpm approve-builds` presionamos tecla 'a' (para seleccionar todas las opciones) despues 'Enter' despues 'y'
+
+### Módulo Usuario
+
+4. `nest g module user` para generar el boilerplate del módulo usuario.
+
+5. Escribir código de archivos `src/config.ts`, `src/mikro-orm.config.ts` y carpeta `src/user/`
