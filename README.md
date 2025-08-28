@@ -42,5 +42,9 @@ En caso de error actualizar NodeJS y reintentar
 
 4. Escribir código de carpeta `src/user/dto` y archivos `src/user/user.interface.ts`, `src/user/user.service.ts` 
 
+# 28/08/25
 
+1. `pnpm i class-transformer reflect-metadata`
+
+2. Escribir código de archivos `src/shared/pipes/validation.pipe.ts` `src/user/user.decorator.ts`
 
