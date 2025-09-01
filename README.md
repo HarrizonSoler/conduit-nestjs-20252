@@ -48,3 +48,10 @@ En caso de error actualizar NodeJS y reintentar
 
 2. Escribir código de archivos `src/shared/pipes/validation.pipe.ts` `src/user/user.decorator.ts`
 
+# 01/09/25
+
+1. `pnpm install @nestjs/swagger`
+
+2. `pnpm approve-builds` presionamos tecla 'a' (para seleccionar todas las opciones) despues 'Enter' despues 'y'
+
+3. Escribir código de archivos `src/user/auth.middleware.ts`,  `src/user/user.controller.ts`, `src/user/user.service.ts`, `src/user/user.module.ts`, `src/app.module.ts`
