@@ -29,6 +29,22 @@ export class UserService {
         })
     }
 
+    async findByEmail(email: string): Promise<UserResponse> {
+        const user = await this.repository.findOneOrFail({ email })
+        return this.buildUserResponse(user)
+    }
+
+    async findById(id: number): Promise<UserResponse> {
+        const user = await this.repository.findOne(id)
+        
+        if (!user) {
+            const errors = { User: 'not found' }
+            throw new HttpException({ errors }, 401)
+        }
+
+        return this.buildUserResponse(user)
+    }
+
     async create({ username, email, password }: CreateUserDto): Promise<UserResponse> {
         const exists = await this.repository.count({ $or: [{ username }, { email }]})
 
