@@ -25,6 +25,8 @@ export class ValidationPipe implements PipeTransform<any> {
                 errors: this.buildError(errors),
             }, HttpStatus.BAD_REQUEST)
         }
+
+        return value
     }
 
     private buildError(errors: ValidationError[]) {
@@ -36,6 +38,8 @@ export class ValidationPipe implements PipeTransform<any> {
                 result[prop + constraint[0]] = `${constraint[1]}`
             })
         }
+
+        return result
     }
 
     private toValidate(metatype: unknown): boolean {

@@ -1,6 +1,7 @@
-import { Collection, Entity, EntityDTO, EntityRepositoryType, ManyToMany, Opt, PrimaryKey, Property, wrap } from "@mikro-orm/core";
+import { Collection, Entity, EntityDTO, EntityRepositoryType, ManyToMany, Opt, PrimaryKey, Property, wrap } from "@mikro-orm/sqlite";
 import { IsEmail } from "class-validator";
 import { UserRepository } from "./user.repository";
+import { hashSync } from "bcrypt";
 
 @Entity({ repository: () => UserRepository })
 export class User {
@@ -25,10 +26,16 @@ export class User {
     @Property({ hidden: true })
     password: string;
 
-    @ManyToMany({ hidden: true })
-    favorites = new Collection<Article>(this);
+    // @ManyToMany({ hidden: true })
+    // favorites = new Collection<Article>(this);
 
-    @ManyToMany({ hidden: true })
+    @ManyToMany({ 
+        hidden: true, 
+        entity: () => User, 
+        inversedBy: u => u.followed, 
+        owner: true, 
+        pivotTable: 'user_to_follower' 
+    })
     followers = new Collection<User>(this);
 
     @ManyToMany(() => User, u => u.followers, { hidden: true })
@@ -37,7 +44,7 @@ export class User {
     constructor(username: string, email: string, password: string) {
         this.username = username
         this.email = email
-        this.password = password
+        this.password = hashSync(password, 10)
     }
 
     toJSON(user?: User) {

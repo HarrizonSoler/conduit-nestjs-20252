@@ -1,13 +1,16 @@
 import { Module, OnModuleInit } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { MikroORM } from '@mikro-orm/sqlite';
+import { MikroOrmModule } from '@mikro-orm/nestjs';
 
 @Module({
-  imports: [UserModule],
+  imports: [
+    MikroOrmModule.forRoot(),
+    UserModule
+  ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [],
 })
 export class AppModule implements OnModuleInit {
   constructor(private readonly orm: MikroORM) {}

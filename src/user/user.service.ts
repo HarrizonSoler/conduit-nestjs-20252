@@ -3,7 +3,7 @@ import { UserRepository } from "./user.repository";
 import { EntityManager, wrap } from "@mikro-orm/sqlite";
 import { User } from "./user.entity";
 import { CreateUserDto, LoginUserDto, UpdateUserDto } from "./dto";
-import { hash } from "bcrypt";
+import { compare, hash } from "bcrypt";
 import { UserResponse } from "./user.interface";
 import { validate } from "class-validator";
 import jwt from "jsonwebtoken"
@@ -21,12 +21,17 @@ export class UserService {
     }
 
     async findOne(credentials: LoginUserDto): Promise<User | null> {
-        const hashedPassword = await hash(credentials.password, 10)
-
-        return this.repository.findOne({
-            email: credentials.email,
-            password: hashedPassword
+        const foundUser = await this.repository.findOne({
+            email: credentials.email
         })
+
+        if (!foundUser) {
+            return null
+        }
+
+        const isPasswordMatching = await compare(credentials.password, foundUser.password)
+
+        return isPasswordMatching ? foundUser : null
     }
 
     async findByEmail(email: string): Promise<UserResponse> {

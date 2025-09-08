@@ -1,12 +1,14 @@
-import { defineConfig } from "@mikro-orm/core";
+import { EntityGenerator } from "@mikro-orm/entity-generator";
+import { Migrator } from "@mikro-orm/migrations";
+import { TsMorphMetadataProvider } from "@mikro-orm/reflection";
+import { SeedManager } from "@mikro-orm/seeder";
+import { defineConfig } from "@mikro-orm/sqlite";
 
 export default defineConfig({
-    host: 'localhost',
-    port: 3307,
-    user: 'root',
-    password: '',
-    dbName: 'conduitdb',
+    dbName: 'conduitdb.sqlite3',
     entities: ['dist/**/*.entity.js'],
     entitiesTs: ['src/**/*.entity.ts'],
-    debug: true
+    debug: true,
+    metadataProvider: TsMorphMetadataProvider,
+    extensions: [Migrator, EntityGenerator, SeedManager]
 })
