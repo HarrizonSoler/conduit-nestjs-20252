@@ -1,7 +1,8 @@
-import { Collection, Entity, EntityDTO, EntityRepositoryType, ManyToMany, Opt, PrimaryKey, Property, wrap } from "@mikro-orm/sqlite";
+import { Collection, Entity, EntityDTO, EntityRepositoryType, ManyToMany, OneToMany, Opt, PrimaryKey, Property, wrap } from "@mikro-orm/sqlite";
 import { IsEmail } from "class-validator";
 import { UserRepository } from "./user.repository";
 import { hashSync } from "bcrypt";
+import { Article } from "src/article/article.entity";
 
 @Entity({ repository: () => UserRepository })
 export class User {
@@ -26,8 +27,8 @@ export class User {
     @Property({ hidden: true })
     password: string;
 
-    // @ManyToMany({ hidden: true })
-    // favorites = new Collection<Article>(this);
+    @ManyToMany({ hidden: true })
+    favorites = new Collection<Article>(this);
 
     @ManyToMany({ 
         hidden: true, 
@@ -40,6 +41,9 @@ export class User {
 
     @ManyToMany(() => User, u => u.followers, { hidden: true })
     followed = new Collection<User>(this);
+
+    @OneToMany(() => Article, article => article.author, { hidden: true })
+    articles = new Collection<Article>(this);
 
     constructor(username: string, email: string, password: string) {
         this.username = username
