@@ -56,6 +56,12 @@ En caso de error actualizar NodeJS y reintentar
 
 3. Escribir código de archivos `src/user/auth.middleware.ts`,  `src/user/user.controller.ts`, `src/user/user.service.ts`, `src/user/user.module.ts`, `src/app.module.ts`
 
+# 08/09/25
+
+1. `pnpm i @mikro-orm/migrations @mikro-orm/entity-generator @mikro-orm/reflection @mikro-orm/seeder @mikro-orm/cli`
+
+2. Ejecutar migraciones:  `pnpm mikro-orm migration:create -- --initial`
+
 # 15/09/25
 
 - `pnpm install slug`
