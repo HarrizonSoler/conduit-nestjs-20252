@@ -8,9 +8,9 @@ export const User = createParamDecorator((data, ctx: ExecutionContext) => {
     if (!!req.user) {
         return !!data ? req.user[data] : req.user
     }
-    
+
     const token = req.headers?.authorization
-        ? (req.header.authorization as string).split(' ')
+        ? (req.headers.authorization as string).split(' ')
         : null
 
     if (token?.[1]) {
