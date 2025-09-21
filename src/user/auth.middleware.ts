@@ -12,7 +12,7 @@ export class AuthMiddleware implements NestMiddleware {
     async use(req: Request & { user?: UserData & { id?: number } }, res: Response, next: NextFunction) {
         const authHeaders = req.headers.authorization
 
-        const token = (authHeaders as string).split(' ')[1]
+        const token = (authHeaders as string)?.split(' ')[1]
 
         if (!authHeaders || !token) {
             throw new HttpException('Not authorized', HttpStatus.UNAUTHORIZED)
