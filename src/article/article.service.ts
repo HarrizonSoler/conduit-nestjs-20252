@@ -162,6 +162,6 @@ export class ArticleService {
   }
 
   async delete(slug: string) {
-    return this.articleRepository.nativeDelete({ slug });
+    this.articleRepository.nativeDelete({ slug });
   }
 }
