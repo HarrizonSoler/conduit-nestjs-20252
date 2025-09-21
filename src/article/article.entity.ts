@@ -1,7 +1,7 @@
 import { ArrayType, Collection, Entity, EntityDTO, ManyToOne, OneToMany, PrimaryKey, Property, wrap } from "@mikro-orm/sqlite";
-import { User } from "src/user/user.entity";
 import { Comment } from "./comment.entity";
 import slug from "slug";
+import { User } from '../user/user.entity';
 
 @Entity()
 export class Article {

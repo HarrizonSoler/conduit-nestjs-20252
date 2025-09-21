@@ -1,7 +1,8 @@
-import { ManyToOne, PrimaryKey, Property } from "@mikro-orm/sqlite";
-import { User } from "src/user/user.entity";
+import { Entity, ManyToOne, PrimaryKey, Property } from "@mikro-orm/sqlite";
 import { Article } from "./article.entity";
+import { User } from '../user/user.entity';
 
+@Entity()
 export class Comment {
   @PrimaryKey()
   id!: number

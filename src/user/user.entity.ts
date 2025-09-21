@@ -2,7 +2,7 @@ import { Collection, Entity, EntityDTO, EntityRepositoryType, ManyToMany, OneToM
 import { IsEmail } from "class-validator";
 import { UserRepository } from "./user.repository";
 import { hashSync } from "bcrypt";
-import { Article } from "src/article/article.entity";
+import { Article } from "../article/article.entity";
 
 @Entity({ repository: () => UserRepository })
 export class User {
